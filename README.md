@@ -227,6 +227,12 @@ Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_p
 * **Controle de Versão:** Git e GitHub.
 
 ---
+## Melhorias a serem implementadas
+
+* Este projeto tem cunho educacional e não reflete dados reais. Porém, pensando num contexto real, o que pode ser feito, num processo vindouro, é a retenção histórica dos dados (SCD tipo 2) para assim poder fazer as análises ao longo do tempo, que foi um dos problemas encontrados na pergunta 5, por exemplo. Dados históricos também auxliam a entender a progressão das vendas e faturamento, bem como entender se há diferenças sazonais como, por exemplo, aumento ou diminuição de vendas no período de festas de fim de ano, com posterior criação de ações de marketing/venda específicas.
+* Outro ponto a se salientar é que os dados vêm de fontes diferentes e aqui temos um recorte histórico determinado. Para otimizar a sugestão anterior, o ideal seria criar um pipeline que possa gerir todo o processo, da exportação à análise dos dados, especialmente na nuvem, para evitar a necessidade de equipamentos e servidores locais, que geram custo de manutenção e pessoal.
+
+---
 
 ## Como Executar o Projeto
 
