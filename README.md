@@ -92,7 +92,7 @@ Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado c
 
 ### Tarefa 5: Responder e recomendar
 
-Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas[cite: 3]. Os resultados estão na seção principais insights e conclusão aqui do ReadMe, neste git.
+Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas. Os resultados estão na seção `Principais Insights e Conclusões` aqui do ReadMe, neste git.
 
 ---
 
