@@ -1,0 +1,11 @@
+# Dependencias do pipeline-treino (Python 3.10+)
+pandas==2.2.2             # leitura dos CSVs em blocos (chunks)
+mysql-connector-python==9.0.0  # conexao e carga no MySQL
+
+# Apenas para a camada Gold (notebook):
+matplotlib==3.9.0         # graficos
+jupyter==1.0.0            # rodar o notebook 3_analise.ipynb
+seaborn==0.13.0           # estilização com paletas de cores harmônicas e soluções para sobreposição de elementos
+textwrap==1.16.0          # quebra de texto
+os==0.1.5                  # manipulação de arquivos e diretórios
+sys==0.1.0                 # manipulação de variáveis de ambiente
