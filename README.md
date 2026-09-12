@@ -100,7 +100,8 @@ Nesta etapa foi necessário realizar consultas para responder às perguntas de n
 
 O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com uma tabela fato centralizada e dimensões ao redor, além de uma tabela ponte para resolver o relacionamento N:N entre Lojas e Praças:
 
-![Diagrama do Modelo Estrela](Diagrama%20miniprojeto.png)
+<img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/79de5aa8-9e48-431a-a66f-c16cde6395c4" />
+
 
 ---
 
