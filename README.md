@@ -92,7 +92,7 @@ Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado c
 
 ### Tarefa 5: Responder e recomendar
 
-Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas[cite: 3]. Os resultados estão na seção principais insights e conclusão aqui do ReadMe, neste git.
+Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas. Os resultados estão na seção `Principais Insights e Conclusões` aqui do ReadMe, neste git.
 
 ---
 
@@ -102,10 +102,11 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 <img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/79de5aa8-9e48-431a-a66f-c16cde6395c4" />
 
+Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_pata_amiga?view=relationships"
 
 ---
 
-## Principais insights e conclusões
+## Principais insights e conclusões 
 
 ### P1: Onde está o gargalo da entrega?
 
