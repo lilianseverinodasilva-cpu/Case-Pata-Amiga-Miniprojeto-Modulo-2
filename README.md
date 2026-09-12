@@ -1,5 +1,21 @@
 # Data Warehouse & Business Intelligence: Case Pata Amiga Petshops
 
+## Índice
+* [Sobre o Projeto](#sobre-o-projeto)
+* [Etapas do Projeto](#etapas-do-projeto)
+  * [Etapa 1: Diagnóstico da origem](#etapa-1-diagnóstico-da-origem)
+  * [Tarefa 2: Tratamento dos dados](#tarefa-2-tratamento-dos-dados)
+  * [Tarefa 3: Construir as dimensões](#tarefa-3-construir-as-dimensões)
+  * [Tarefa 4: Construir a fato](#tarefa-4-construir-a-fato)
+  * [Tarefa 5: Responder e recomendar](#tarefa-5-responder-e-recomendar)
+* [Arquitetura de Dados & Modelo Dimensional](#arquitetura-de-dados--modelo-dimensional)
+* [Principais insights e conclusões](#principais-insights-e-conclusões)
+* [Estrutura dos Arquivos do Projeto no Git](#estrutura-dos-arquivos-do-projeto-no-git)
+* [Tecnologias e Ferramentas](#tecnologias-e-ferramentas)
+* [Como Executar o Projeto](#como-executar-o-projeto)
+
+---
+
 ## Sobre o Projeto
 
 Este projeto foi desenvolvido como o **Projeto Avaliativo do Módulo 2** do curso de Análise de Dados com Python, oferecido pelo **SCTec** em parceria com a **SET** do Estado de Santa Catarina[cite: 3].
@@ -16,11 +32,13 @@ O projeto foi organizado em cinco tarefas, descritas a seguir[cite: 3]:
 
 ---
 
-## Etapa 1: Diagnóstico da origem
+## Etapas do Projeto
+
+### Etapa 1: Diagnóstico da origem
 
 Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem diversos erros/inadequações[cite: 3]. Para isso, usa-se o arquivo `01-carga-staging`, já disponibilizado previamente, e confere-se os dados com o `00-conferencia`[cite: 3]. Realizei comandos específicos de `SELECT` no SQL para encontrar as diferentes grafias das colunas mencionadas no diagnóstico de conferência[cite: 3].
 
-### Diagnóstico de Anomalias
+#### Diagnóstico de Anomalias
 
 | Diagnóstico | Valor Encontrado | Esperado |
 | :--- | :---: | :---: |
@@ -43,27 +61,36 @@ Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem div
 **Grafias distintas na coluna `CanalPedido` da `stg_pedido`:**
 > SITE, App, App Pata Amiga, loja fisica, Whatsapp, Telefone, Tel.[cite: 3]
 
+#### Marcos de Entrega em Branco (Processos Logísticos Abertos)
+
+| Marco | Em_branco | esperado |
+| :--- | :---: | :---: |
+| Dt Separacao Estoque | **1077** | 1077 |
+| DtNotaFiscal | **1338** | 1338 |
+| Dt_Despacho_Transportadora | **1665** | 1665 |
+| DtEntregaCliente | **1953** | 1953 |
+
 ---
 
-## Tarefa 2: Tratamento dos dados
+### Tarefa 2: Tratamento dos dados
 
 Com base nos erros encontrados na tarefa 1, faz-se as alterações necessárias aqui nesta etapa[cite: 3]. Para isso, usa-se o arquivo `02-dimensoes-prontas`, já fornecido pelo projeto, para realizar todas as adequações[cite: 3]. Aqui não foi necessário digitar ou codar nada[cite: 3]. Ao final, todos os comandos de conferência estavam corretos, então a criação das tabelas raw/bronze e de dimensão, até o momento, deram certo[cite: 3].
 
 ---
 
-## Tarefa 3: Construir as dimensões
+### Tarefa 3: Construir as dimensões
 
 Aqui usa-se o arquivo `03-dimensoes`, disponibilizado previamente, e nele inseri os códigos para as devidas populações das tabelas dimensão pedidas[cite: 3]. Depois, fiz a conferência com o arquivo 00, após a etapa 3, e todos os dados ficaram corretos[cite: 3].
 
 ---
 
-## Tarefa 4: Construir a fato
+### Tarefa 4: Construir a fato
 
 Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado com o código necessário para a efetiva criação e população da tabela fato[cite: 3]. Depois disso, executei os códigos de verificação no arquivo `00-conferencia`, e todos os resultados estavam dentro do esperado[cite: 3].
 
 ---
 
-## Tarefa 5: Responder e recomendar
+### Tarefa 5: Responder e recomendar
 
 Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio[cite: 3]. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas[cite: 3]. Os resultados estão na seção principais insights e conclusão aqui do ReadMe, neste git[cite: 3].
 
@@ -75,6 +102,7 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ![Diagrama do Modelo Estrela](Diagrama%20miniprojeto.png)
 
+---
 
 ## Principais insights e conclusões
 
@@ -82,7 +110,7 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 * **Diagnóstico e Localização do Gargalo:** O gargalo do processo de entrega está concentrado na etapa de expedição interna (**Nota Fiscal → Despacho**).
 * **Tempo Médio Geral:** O fluxo completo (do ERP até o cliente) leva em média **7,93 a 7,95 dias** nas lojas Médias e Grandes, mas dobra para **15,16 dias** nas lojas de Pequeno porte.
-* **Comportamento por Porte:** **Sim, o gargalo é a mesma etapa (Nota → Despacho) nos três portes de loja**[cite: 2]. Contudo, nas lojas pequenas a espera é desproporcional, consumindo 8,53 dias apenas na expedição[cite: 2].
+* **Comportamento por Porte:** **Sim, o gargalo é a mesma etapa (Nota → Despacho) nos três portes de loja**. Contudo, nas lojas pequenas a espera é desproporcional, consumindo 8,53 dias apenas na expedição.
 
 | Porte da Loja | Integração → Separação | Separação → Nota | Nota → Despacho | Despacho → Entrega | Tempo Total (Dias) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -95,8 +123,8 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ### P2: Qual categoria concentra o faturamento?
 
-* **Concentração de Faturamento da Rede:** A categoria **Ração** lidera as vendas da rede, acumulando **R$ 1.076.202,55 (60,01%)** do faturamento total[cite: 2].
-* **Unanimidade nos Portes:** **Sim, a categoria Ração é a campeã absoluta em todos os portes de loja**, seguida por Medicamentos (~17%) e Petiscos (~7%)[cite: 2].
+* **Concentração de Faturamento da Rede:** A categoria **Ração** lidera as vendas da rede, acumulando **R$ 1.076.202,55 (60,01%)** do faturamento total.
+* **Unanimidade nos Portes:** **Sim, a categoria Ração é a campeã absoluta em todos os portes de loja**, seguida por Medicamentos (~17%) e Petiscos (~7%).
 
 | Nome da Categoria | Faturamento Total (R$) | % do Total da Rede |
 | :--- | :---: | :---: |
@@ -112,8 +140,8 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ### P3: O desconto funciona igual em todo canal?
 
-* **Eficiência do Desconto & Performance dos Canais:** **Sim.** Em todos os canais de venda, a concessão de desconto impulsiona compras maiores, gerando um ticket médio 2,5 a 3 vezes superior às vendas sem desconto[cite: 2].
-* **Relevância dos Canais Digitais:** O **App** (30,79%) e o **Site** (25,13%) representam **55,92% da receita total da rede**[cite: 2].
+* **Eficiência do Desconto & Performance dos Canais:** **Sim.** Em todos os canais de venda, a concessão de desconto impulsiona compras maiores, gerando um ticket médio 2,5 a 3 vezes superior às vendas sem desconto.
+* **Relevância dos Canais Digitais:** O **App** (30,79%) e o **Site** (25,13%) representam **55,92% da receita total da rede**.
 
 | Canal de Pedido | Ticket Médio COM Desconto | Ticket Médio SEM Desconto | Faturamento no Canal (R$) | % Faturamento Total |
 | :--- | :---: | :---: | :---: | :---: |
@@ -128,7 +156,7 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ### P4: Qual praça de atendimento concentra o faturamento?
 
-* **Rateio de Faturamento por Praça:** O **Vale do Itajaí** lidera o faturamento rateado com **R$ 633.746,09 (35,34% do total)**, alinhado à sua base de 148.000 domicílios com pet[cite: 2].
+* **Rateio de Faturamento por Praça:** O **Vale do Itajaí** lidera o faturamento rateado com **R$ 633.746,09 (35,34% do total)**, alinhado à sua base de 148.000 domicílios com pet.
 * **Consistência do Rateio:** A aplicação do fator público da ponte garante que a soma das praças fecha com o faturamento das lojas identificadas.
 
 | Nome da Praça | Regional | Domicílios com Pet | Faturamento Rateado (R$) | % Faturamento Total |
@@ -143,7 +171,7 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ### P5: Onde abrir a próxima loja, e o que os dados NÃO permitem afirmar?
 
-* **a) Recomendação Estratégica de Expansão:** Recomenda-se expandir o suporte logístico (Dark Stores / Lojas de Apoio) no **Vale do Itajaí** (Rio dos Cedros, Presidente Getúlio, Ibirama) e na **Grande Florianópolis/Norte** (Itapoá, Santo Amaro da Imperatriz)[cite: 2]. Essas cidades têm o maior consumo relativo por habitante, mas sofrem com prazos de entrega elevados (> 14 dias)[cite: 2].
+* **a) Recomendação Estratégica de Expansão:** Recomenda-se expandir o suporte logístico (Dark Stores / Lojas de Apoio) no **Vale do Itajaí** (Rio dos Cedros, Presidente Getúlio, Ibirama) e na **Grande Florianópolis/Norte** (Itapoá, Santo Amaro da Imperatriz). Essas cidades têm o maior consumo relativo por habitante, mas sofrem com prazos de entrega elevados (> 14 dias).
 
 | Nome da Loja | Cidade | População | Total Itens | Itens / 1.000 Hab. | Tempo Médio Entrega (Dias) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
@@ -153,7 +181,7 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 | **Pata Amiga Itapoa** | Itapoá | 20586 | 534 | **25.94** | 15.39 |
 | **Pata Amiga Santo Amaro da Imperatriz** | Santo Amaro da Imperatriz | 22357 | 530 | **23.71** | 15.88 |
 
-* **b) Faturamento por Faixa Atual & Limitação SCD Type 1:** Como o cadastro de franquias utiliza **SCD Type 1 (sobrescrita sem histórico)**, **os dados NÃO permitem responder quanto veio de lojas que JÁ ERAM Ouro na data do pedido**, pois a faixa atual sobrescreveu o status passado[cite: 2].
+* **b) Faturamento por Faixa Atual & Limitação SCD Type 1:** Como o cadastro de franquias utiliza **SCD Type 1 (sobrescrita sem histórico)**, **os dados NÃO permitem responder quanto veio de lojas que JÁ ERAM Ouro na data do pedido**, pois a faixa atual sobrescreveu o status passado.
 
 | Faixa Franquia Atual | Faturamento Total (R$) | % Faturamento Total |
 | :--- | :---: | :---: |
@@ -174,25 +202,25 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 ## Estrutura dos Arquivos do Projeto no Git
 
 **Pasta Principal:**
-* **.gitignore:** Arquivo para ignorar arquivos desnecessários no repositório[cite: 2].
-* **requirements.txt:** Resumo das bibliotecas e ferramentas necessárias para a execução do projeto[cite: 2].
-* **README.md:** Documentação principal do projeto[cite: 2].
+* **.gitignore:** Arquivo para ignorar arquivos desnecessários no repositório.
+* **requirements.txt:** Resumo das bibliotecas e ferramentas necessárias para a execução do projeto.
+* **README.md:** Documentação principal do projeto.
 * **Diagrama miniprojeto.png:** Imagem do modelo estrela (Star Schema).
 
 **Pasta `sql/`:**
-* **00-conferencia.sql:** Arquivo já disponibilizado previamente para verificação de dados[cite: 2].
-* **01-carga-staging.sql:** Também já disponibilizado previamente[cite: 2]. Aqui está a carga dos dados brutos para o banco SQL e criação da camada bronze/raw[cite: 2].
-* **02-dimensoes-prontas.sql:** Criação estrutural das tabelas dimensionais e fato[cite: 2].
-* **03-dimensoes.sql:** Carga, limpeza e padronização das dimensões[cite: 2].
-* **04-fato.sql:** Inserção dos eventos de pedidos com tratamento de regras de negócio[cite: 2].
-* **05-perguntas.sql:** Consultas finais respondendo às questões de negócio[cite: 2].
+* **00-conferencia.sql:** Arquivo já disponibilizado previamente para verificação de dados.
+* **01-carga-staging.sql:** Também já disponibilizado previamente. Aqui está a carga dos dados brutos para o banco SQL e criação da camada bronze/raw.
+* **02-dimensoes-prontas.sql:** Criação estrutural das tabelas dimensionais e fato.
+* **03-dimensoes.sql:** Carga, limpeza e padronização das dimensões.
+* **04-fato.sql:** Inserção dos eventos de pedidos com tratamento de regras de negócio.
+* **05-perguntas.sql:** Consultas finais respondendo às questões de negócio.
 
 ---
 
 ## Tecnologias e Ferramentas
 
-* **Banco de Dados:** MySQL / SQL[cite: 2].
-* **Arquitetura de Dados:** Modelagem Dimensional em Star Schema[cite: 2].
+* **Banco de Dados:** MySQL / SQL.
+* **Arquitetura de Dados:** Modelagem Dimensional em Star Schema.
 * **Ferramenta de Diagramação:** dbdiagram.io.
 * **Controle de Versão:** Git e GitHub.
 
@@ -201,13 +229,10 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 ## Como Executar o Projeto
 
 1. Clone este repositório:
-   ``git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)``
-2. Instale as dependências necessárias:
-   ``pip install pandas matplotlib seaborn mysql-connector-python``
-3. Certifique-se de ter um banco de dados MySQL configurado com as tabelas do SCDP (silver_viagem, silver_trecho, silver_passagem e silver_pagamento).
-4. Abra e execute o notebook principal:
-   ``jupyter notebook analise_viagens.ipynb``
+   ```bash
+   git clone [https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git](https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git)
+2. Execute os scripts SQL da pasta sql/ respeitando a ordem numérica (do 01 ao 05).
+3. Para validar a integridade dos dados durante a execução, utilize os comandos do arquivo 00-conferencia.sql.
 ---
-
 
 Desenvolvido por Lilian Severino da Silva
