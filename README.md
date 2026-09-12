@@ -18,17 +18,17 @@
 
 ## Sobre o Projeto
 
-Este projeto foi desenvolvido como o **Projeto Avaliativo do Módulo 2** do curso de Análise de Dados com Python, oferecido pelo **SCTec** em parceria com a **SET** do Estado de Santa Catarina[cite: 3].
+Este projeto foi desenvolvido como o **Projeto Avaliativo do Módulo 2** do curso de Análise de Dados com Python, oferecido pelo **SCTec** em parceria com a **SET** do Estado de Santa Catarina.
 
-O objetivo principal é construir um **Data Warehouse em MySQL** baseado em um **Star Schema (Modelo Estrela)** para a rede de petshops *Pata Amiga*, realizando o pipeline ETL (Extração, Transformação e Carga) da camada Staging para a camada Dimensional/Fato e extraindo *business insights* para responder a cinco perguntas estratégicas da diretoria[cite: 3]:
+O objetivo principal é construir um **Data Warehouse em MySQL** baseado em um **Star Schema (Modelo Estrela)** para a rede de petshops *Pata Amiga*, realizando o pipeline ETL (Extração, Transformação e Carga) da camada Staging para a camada Dimensional/Fato e extraindo *business insights* para responder a cinco perguntas estratégicas da diretoria:
 
-1. **P1:** Onde está o gargalo da entrega? Qual o tempo médio, em dias, entre o pedido entrar no ERP e chegar na casa do cliente? E qual dos quatro intervalos do processo (Integração → Separação, Separação → Nota, Nota → Despacho, Despacho → Entrega) é o mais lento? O gargalo é o mesmo nos três portes de loja?[cite: 3]
-2. **P2:** Qual categoria concentra o faturamento? Do faturamento total da rede, quanto vem de cada categoria de produto? A categoria campeã é a mesma nos três portes de loja?[cite: 3]
-3. **P3:** O desconto funciona igual em todo canal?[cite: 3]
-4. **P4:** Qual praça de atendimento concentra o faturamento?[cite: 3]
-5. **P5:** Onde abrir a próxima loja, e o que os dados NÃO permitem afirmar?[cite: 3]
+1. **P1:** Onde está o gargalo da entrega? Qual o tempo médio, em dias, entre o pedido entrar no ERP e chegar na casa do cliente? E qual dos quatro intervalos do processo (Integração → Separação, Separação → Nota, Nota → Despacho, Despacho → Entrega) é o mais lento? O gargalo é o mesmo nos três portes de loja?
+2. **P2:** Qual categoria concentra o faturamento? Do faturamento total da rede, quanto vem de cada categoria de produto? A categoria campeã é a mesma nos três portes de loja?
+3. **P3:** O desconto funciona igual em todo canal?
+4. **P4:** Qual praça de atendimento concentra o faturamento?
+5. **P5:** Onde abrir a próxima loja, e o que os dados NÃO permitem afirmar?
 
-O projeto foi organizado em cinco tarefas, descritas a seguir[cite: 3]:
+O projeto foi organizado em cinco tarefas, descritas a seguir:
 
 ---
 
@@ -36,7 +36,7 @@ O projeto foi organizado em cinco tarefas, descritas a seguir[cite: 3]:
 
 ### Etapa 1: Diagnóstico da origem
 
-Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem diversos erros/inadequações[cite: 3]. Para isso, usa-se o arquivo `01-carga-staging`, já disponibilizado previamente, e confere-se os dados com o `00-conferencia`[cite: 3]. Realizei comandos específicos de `SELECT` no SQL para encontrar as diferentes grafias das colunas mencionadas no diagnóstico de conferência[cite: 3].
+Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem diversos erros/inadequações. Para isso, usa-se o arquivo `01-carga-staging`, já disponibilizado previamente, e confere-se os dados com o `00-conferencia`. Realizei comandos específicos de `SELECT` no SQL para encontrar as diferentes grafias das colunas mencionadas no diagnóstico de conferência.
 
 #### Diagnóstico de Anomalias
 
@@ -50,16 +50,16 @@ Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem div
 | pedidos sem nome de loja (vao para a -1) | **3** | 3 |
 
 **Grafias encontradas em `CategoriaProduto`, na `stg_pedido` e classificadas em ordem alfabética:**
-> ACESSORIO, Acessorios, brinquedo, Brinquedos, Hig., Higiene, Higiene e Beleza, Med., MEDICAMENTO, Medicamentos, Petisco, Petiscos, Rac., RACAO, Racao Medicamentosa, Racao Seca, Servico, Servicos[cite: 3]
+> ACESSORIO, Acessorios, brinquedo, Brinquedos, Hig., Higiene, Higiene e Beleza, Med., MEDICAMENTO, Medicamentos, Petisco, Petiscos, Rac., RACAO, Racao Medicamentosa, Racao Seca, Servico, Servicos
 
 **Grafias distintas de `Loja-Nome` em `stg_pedido`, classificadas por ordem alfabética (a primeira linha é vazia mesmo):**
-> Pata Amiga Ararangua, Pata Amiga Blumenal Centro, pata amiga blumenau centro, Pata Amiga Blumenau Centro, Pata Amiga Blumenau Centro/SC, Pata Amiga Brusque, Pata Amiga Chapecó, Pata Amiga Chapeco/SC, Pata Amiga Concórdia, pata amiga criciuma, Pata Amiga Criciuma/SC, PATA AMIGA CURITIBANOS, Pata Amiga Florianópolis Norte, Pata Amiga Florianopolis Norte/SC, Pata Amiga Floripa Norte, PATA AMIGA GASPAR, Pata Amiga Gaspar, Pata Amiga Ibirama, Pata Amiga Ibirama/SC, Pata Amiga Indaial, Pata Amiga Itajaí Praia, Pata Amiga Itajai Praia/SC, PATA AMIGA ITAPOA, Pata Amiga Ituporanga, Pata Amiga Jaraguá do Sul, Pata Amiga Jgua do Sul, PATA AMIGA JOINVILLE SUL, Pata Amiga Joinville Sul/SC, Pata Amiga Lages, pata amiga laguna, Pata Amiga Laguna/SC, Pata Amiga Otacilio Costa, PATA AMIGA OTACILIO COSTA, PATA AMIGA PALHOCA, Pata Amiga Presidente Getulio, Pata Amiga Rio do Sul, PATA AMIGA RIO DOS CEDROS, Pata Amiga Santo Amaro da Imperatriz, Pata Amiga Sao Bento do Sul, Pata Amiga São Joaquim, Pata Amiga São Jose Kobrasol, Pata Amiga Sao Jose Kobrasol/SC, Pata Amiga São Miguel do Oeste, PATA AMIGA TAIO, Pata Amiga Timbo, Pata Amiga Tubarão, PATA AMIGA XANXERE[cite: 3]
+> Pata Amiga Ararangua, Pata Amiga Blumenal Centro, pata amiga blumenau centro, Pata Amiga Blumenau Centro, Pata Amiga Blumenau Centro/SC, Pata Amiga Brusque, Pata Amiga Chapecó, Pata Amiga Chapeco/SC, Pata Amiga Concórdia, pata amiga criciuma, Pata Amiga Criciuma/SC, PATA AMIGA CURITIBANOS, Pata Amiga Florianópolis Norte, Pata Amiga Florianopolis Norte/SC, Pata Amiga Floripa Norte, PATA AMIGA GASPAR, Pata Amiga Gaspar, Pata Amiga Ibirama, Pata Amiga Ibirama/SC, Pata Amiga Indaial, Pata Amiga Itajaí Praia, Pata Amiga Itajai Praia/SC, PATA AMIGA ITAPOA, Pata Amiga Ituporanga, Pata Amiga Jaraguá do Sul, Pata Amiga Jgua do Sul, PATA AMIGA JOINVILLE SUL, Pata Amiga Joinville Sul/SC, Pata Amiga Lages, pata amiga laguna, Pata Amiga Laguna/SC, Pata Amiga Otacilio Costa, PATA AMIGA OTACILIO COSTA, PATA AMIGA PALHOCA, Pata Amiga Presidente Getulio, Pata Amiga Rio do Sul, PATA AMIGA RIO DOS CEDROS, Pata Amiga Santo Amaro da Imperatriz, Pata Amiga Sao Bento do Sul, Pata Amiga São Joaquim, Pata Amiga São Jose Kobrasol, Pata Amiga Sao Jose Kobrasol/SC, Pata Amiga São Miguel do Oeste, PATA AMIGA TAIO, Pata Amiga Timbo, Pata Amiga Tubarão, PATA AMIGA XANXERE
 
 **Grafias distintas na coluna `HouveDesconto` da `stg_pedido`:**
-> true, X, SIM, V, S, 1, Nao, N, false, F, 0[cite: 3]
+> true, X, SIM, V, S, 1, Nao, N, false, F, 0
 
 **Grafias distintas na coluna `CanalPedido` da `stg_pedido`:**
-> SITE, App, App Pata Amiga, loja fisica, Whatsapp, Telefone, Tel.[cite: 3]
+> SITE, App, App Pata Amiga, loja fisica, Whatsapp, Telefone, Tel.
 
 #### Marcos de Entrega em Branco (Processos Logísticos Abertos)
 
@@ -74,25 +74,25 @@ Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem div
 
 ### Tarefa 2: Tratamento dos dados
 
-Com base nos erros encontrados na tarefa 1, faz-se as alterações necessárias aqui nesta etapa[cite: 3]. Para isso, usa-se o arquivo `02-dimensoes-prontas`, já fornecido pelo projeto, para realizar todas as adequações[cite: 3]. Aqui não foi necessário digitar ou codar nada[cite: 3]. Ao final, todos os comandos de conferência estavam corretos, então a criação das tabelas raw/bronze e de dimensão, até o momento, deram certo[cite: 3].
+Com base nos erros encontrados na tarefa 1, faz-se as alterações necessárias aqui nesta etapa. Para isso, usa-se o arquivo `02-dimensoes-prontas`, já fornecido pelo projeto, para realizar todas as adequações. Aqui não foi necessário digitar ou codar nada. Ao final, todos os comandos de conferência estavam corretos, então a criação das tabelas raw/bronze e de dimensão, até o momento, deram certo.
 
 ---
 
 ### Tarefa 3: Construir as dimensões
 
-Aqui usa-se o arquivo `03-dimensoes`, disponibilizado previamente, e nele inseri os códigos para as devidas populações das tabelas dimensão pedidas[cite: 3]. Depois, fiz a conferência com o arquivo 00, após a etapa 3, e todos os dados ficaram corretos[cite: 3].
+Aqui usa-se o arquivo `03-dimensoes`, disponibilizado previamente, e nele inseri os códigos para as devidas populações das tabelas dimensão pedidas. Depois, fiz a conferência com o arquivo 00, após a etapa 3, e todos os dados ficaram corretos.
 
 ---
 
 ### Tarefa 4: Construir a fato
 
-Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado com o código necessário para a efetiva criação e população da tabela fato[cite: 3]. Depois disso, executei os códigos de verificação no arquivo `00-conferencia`, e todos os resultados estavam dentro do esperado[cite: 3].
+Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado com o código necessário para a efetiva criação e população da tabela fato. Depois disso, executei os códigos de verificação no arquivo `00-conferencia`, e todos os resultados estavam dentro do esperado.
 
 ---
 
 ### Tarefa 5: Responder e recomendar
 
-Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio[cite: 3]. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas[cite: 3]. Os resultados estão na seção principais insights e conclusão aqui do ReadMe, neste git[cite: 3].
+Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas[cite: 3]. Os resultados estão na seção principais insights e conclusão aqui do ReadMe, neste git.
 
 ---
 
