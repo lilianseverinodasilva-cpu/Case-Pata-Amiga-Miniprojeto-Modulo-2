@@ -143,3 +143,45 @@ JOIN bridge_loja_praca b ON dl.cod_loja = b.cod_loja;
 --      itens e valores em branco.
 
 -- >>> ESCREVA AQUI as consultas da P5
+
+--  (a) Ranqueie as lojas por itens POR MIL HABITANTES (numerador na fato,
+--      denominador na dimensao), calculado AQUI na consulta - nunca gravado
+--      pronto. Cruze com o tempo medio de entrega.
+
+SELECT 
+    dl.nome_loja,
+    dl.cidade,
+    dl.populacao_cidade,
+    SUM(f.qt_itens) AS total_itens_vendidos,
+    ROUND(SUM(f.qt_itens) / (dl.populacao_cidade / 1000.0), 2) AS itens_por_mil_habitantes,
+    ROUND(AVG(f.dias_total_ate_entrega), 2) AS tempo_medio_entrega_dias
+FROM fato_pedido f
+JOIN dim_loja dl ON f.sk_loja = dl.sk_loja
+WHERE dl.sk_loja <> -1
+GROUP BY dl.nome_loja, dl.cidade, dl.populacao_cidade
+ORDER BY itens_por_mil_habitantes DESC;
+
+
+--  (b) Mostre o faturamento por faixa de franquia e explique por que ele NAO
+--      responde "quanto veio de lojas que JA ERAM Ouro na data do pedido": o
+--      cadastro so tem a foto de hoje.
+
+SELECT 
+    dl.faixa_franquia AS faixa_franquia_atual,
+    SUM(f.vl_liquido) AS faturamento_total,
+    ROUND(100.0 * SUM(f.vl_liquido) / (SELECT SUM(vl_liquido) FROM fato_pedido), 2) AS pct_faturamento
+FROM fato_pedido f
+JOIN dim_loja dl ON f.sk_loja = dl.sk_loja
+GROUP BY dl.faixa_franquia
+ORDER BY faturamento_total DESC;
+
+
+--  (c) Meca o que ficou de fora: pedidos sem loja, entregas nao concluidas,
+--      itens e valores em branco.
+
+SELECT 
+    COUNT(CASE WHEN sk_loja = -1 THEN 1 END) AS pedidos_sem_loja,
+    COUNT(CASE WHEN sk_tempo_entrega = -1 THEN 1 END) AS entregas_nao_concluidas,
+    COUNT(CASE WHEN qt_itens IS NULL THEN 1 END) AS itens_em_branco,
+    COUNT(CASE WHEN vl_liquido IS NULL THEN 1 END) AS valores_em_branco
+FROM fato_pedido;
