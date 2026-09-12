@@ -102,10 +102,11 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 <img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/79de5aa8-9e48-431a-a66f-c16cde6395c4" />
 
+Disponível também em: ```https://dbdocs.io/lilianseverinodasilva/diagrama_case_pata_amiga?view=relationships```
 
 ---
 
-## Principais insights e conclusões
+## Principais insights e conclusões 
 
 ### P1: Onde está o gargalo da entrega?
 
