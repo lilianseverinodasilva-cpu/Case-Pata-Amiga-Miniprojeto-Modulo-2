@@ -200,9 +200,14 @@ O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com 
 
 ## Como Executar o Projeto
 
-1. Clone este repositório[cite: 2]:
-   ```bash
-   git clone [https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git](https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git)
-┌──────┴───────┐       │
-│  dim_praca   ├───────┘
-└──────────────┘
+1. Clone este repositório:
+   ``git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)``
+2. Instale as dependências necessárias:
+   ``pip install pandas matplotlib seaborn mysql-connector-python``
+3. Certifique-se de ter um banco de dados MySQL configurado com as tabelas do SCDP (silver_viagem, silver_trecho, silver_passagem e silver_pagamento).
+4. Abra e execute o notebook principal:
+   ``jupyter notebook analise_viagens.ipynb``
+---
+
+
+Desenvolvido por Lilian Severino da Silva
