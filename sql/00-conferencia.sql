@@ -37,6 +37,13 @@ UNION ALL SELECT 'pedidos sem Cod Loja preenchido',
 UNION ALL SELECT 'pedidos sem nome de loja (vao para a -1)',
        SUM(CASE WHEN `Loja-Nome` = '' THEN 1 ELSE 0 END), '3' FROM stg_pedido;
 
+-- Verificando as grafias diferentes:
+
+SELECT DISTINCT `CategoriaProduto` FROM stg_pedido;
+SELECT DISTINCT `Loja-Nome` FROM stg_pedido;
+SELECT DISTINCT `HouveDesconto` FROM stg_pedido;
+SELECT DISTINCT `CanalPedido` FROM stg_pedido;
+
 -- Os quatro marcos em branco = processo em aberto. Vao virar dias NULL.
 SELECT 'Dt Separacao Estoque' AS marco,
        SUM(CASE WHEN `Dt Separacao Estoque` = '' THEN 1 ELSE 0 END) AS em_branco,
