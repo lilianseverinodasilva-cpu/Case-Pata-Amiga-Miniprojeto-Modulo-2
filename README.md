@@ -100,7 +100,8 @@ Nesta etapa foi necessário realizar consultas para responder às perguntas de n
 
 O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com uma tabela fato centralizada e dimensões ao redor, além de uma tabela ponte para resolver o relacionamento N:N entre Lojas e Praças:
 
-<img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/79de5aa8-9e48-431a-a66f-c16cde6395c4" />
+<img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/97dba933-7358-4178-85bd-31d534b012b1" />
+
 
 Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_pata_amiga?view=relationships"
 
@@ -225,6 +226,12 @@ Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_p
 * **Arquitetura de Dados:** Modelagem Dimensional em Star Schema.
 * **Ferramenta de Diagramação:** dbdiagram.io.
 * **Controle de Versão:** Git e GitHub.
+
+---
+## Melhorias a serem implementadas
+
+* Este projeto tem cunho educacional e não reflete dados reais. Porém, pensando num contexto real, o que pode ser feito, num processo vindouro, é a retenção histórica dos dados (SCD tipo 2) para assim poder fazer as análises ao longo do tempo, que foi um dos problemas encontrados na pergunta 5, por exemplo. Dados históricos também auxliam a entender a progressão das vendas e faturamento, bem como entender se há diferenças sazonais como, por exemplo, aumento ou diminuição de vendas no período de festas de fim de ano, com posterior criação de ações de marketing/venda específicas.
+* Outro ponto a se salientar é que os dados vêm de fontes diferentes e aqui temos um recorte histórico determinado. Para otimizar a sugestão anterior, o ideal seria criar um pipeline que possa gerir todo o processo, da exportação à análise dos dados, especialmente na nuvem, para evitar a necessidade de equipamentos e servidores locais, que geram custo de manutenção e pessoal.
 
 ---
 
