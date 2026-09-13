@@ -174,15 +174,46 @@ Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_p
 
 ### P5: Onde abrir a próxima loja, e o que os dados NÃO permitem afirmar?
 
-* **a) Recomendação Estratégica de Expansão:** Recomenda-se expandir o suporte logístico (Dark Stores / Lojas de Apoio) no **Vale do Itajaí** (Rio dos Cedros, Presidente Getúlio, Ibirama) e na **Grande Florianópolis/Norte** (Itapoá, Santo Amaro da Imperatriz). Essas cidades têm o maior consumo relativo por habitante, mas sofrem com prazos de entrega elevados (> 14 dias).
+* **a) Recomendação Estratégica de Expansão:** O ranqueamento das lojas por **itens vendidos por mil habitantes** cruzado com o **tempo médio de entrega** evidencia que as maiores capitais e cidades já consolidadas (como Florianópolis, Joinville, Criciúma e Blumenau) apresentam baixos índices de consumo relativo por habitante (entre 2 e 5 itens/mil hab.) e entregas rápidas (em torno de 7 a 8 dias). 
+
+Em contrapartida, as oportunidades reais de expansão e otimização logística concentram-se em municípios do interior e regiões periféricas — com destaque para **Rio dos Cedros, Presidente Getúlio, Ibirama, Itapoá, Santo Amaro da Imperatriz, Taió, Otacílio Costa e Ituporanga**. Nestas praças, o consumo relativo explode (chegando a mais de 41 itens por mil habitantes), mas a operação sofre com o **gargalo logístico severo**, apresentando prazos médios de entrega elevados que ultrapassam 14 a 16 dias. 
+
+Recomenda-se que a diretoria invista na criação de **Dark Stores ou Lojas de Apoio Regional** nestes polos de alta demanda proporcional para encurtar as distâncias de despacho e absorver a repressão de consumo.
 
 | Nome da Loja | Cidade | População | Total Itens | Itens / 1.000 Hab. | Tempo Médio Entrega (Dias) |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **Pata Amiga Rio dos Cedros** | Rio dos Cedros | 11322 | 474 | **41.87** | 14.24 |
-| **Pata Amiga Presidente Getulio** | Presidente Getúlio | 16359 | 570 | **34.84** | 14.16 |
-| **Pata Amiga Ibirama** | Ibirama | 18613 | 597 | **32.07** | 15.39 |
-| **Pata Amiga Itapoa** | Itapoá | 20586 | 534 | **25.94** | 15.39 |
-| **Pata Amiga Santo Amaro da Imperatriz** | Santo Amaro da Imperatriz | 22357 | 530 | **23.71** | 15.88 |
+| Pata Amiga Rio dos Cedros | Rio dos Cedros | 11322 | 474 | 41.87 | 14.24 |
+| Pata Amiga Presidente Getulio | Presidente Getúlio | 16359 | 570 | 34.84 | 14.16 |
+| Pata Amiga Ibirama | Ibirama | 18613 | 597 | 32.07 | 15.39 |
+| Pata Amiga Itapoa | Itapoá | 20586 | 534 | 25.94 | 15.39 |
+| Pata Amiga Santo Amaro da Imperatriz | Santo Amaro da Imperatriz | 22357 | 530 | 23.71 | 15.88 |
+| Pata Amiga Taio | Taió | 18173 | 352 | 19.37 | 14.57 |
+| Pata Amiga Timbo | Timbó | 45011 | 804 | 17.86 | 7.70 |
+| Pata Amiga Gaspar | Gaspar | 71133 | 1189 | 16.72 | 8.01 |
+| Pata Amiga Otacilio Costa | Otacílio Costa | 18227 | 289 | 15.86 | 15.61 |
+| Pata Amiga Ituporanga | Ituporanga | 25748 | 354 | 13.75 | 16.53 |
+| Pata Amiga Rio do Sul | Rio do Sul | 73135 | 885 | 12.10 | 8.35 |
+| Pata Amiga Sao Joaquim | São Joaquim | 27234 | 320 | 11.75 | 15.07 |
+| Pata Amiga Laguna | Laguna | 46122 | 541 | 11.73 | 8.51 |
+| Pata Amiga Indaial | Indaial | 71987 | 750 | 10.42 | 7.74 |
+| Pata Amiga Ararangua | Araranguá | 68274 | 689 | 10.09 | 8.25 |
+| Pata Amiga Tubarao | Tubarão | 105511 | 889 | 8.43 | 7.69 |
+| Pata Amiga Jaragua do Sul | Jaraguá do Sul | 184579 | 1440 | 7.81 | 8.01 |
+| Pata Amiga Curitibanos | Curitibanos | 39061 | 308 | 7.89 | 8.65 |
+| Pata Amiga Sao Bento do Sul | São Bento do Sul | 87310 | 567 | 6.49 | 8.18 |
+| Pata Amiga Concordia | Concórdia | 74641 | 470 | 6.30 | 7.74 |
+| Pata Amiga Blumenau Centro | Blumenau | 361855 | 2002 | 5.53 | 7.80 |
+| Pata Amiga Xanxere | Xanxerê | 52034 | 284 | 5.46 | 8.17 |
+| Pata Amiga Palhoca | Palhoça | 168259 | 845 | 5.02 | 7.69 |
+| Pata Amiga Sao Miguel do Oeste | São Miguel do Oeste | 41520 | 186 | 4.48 | 8.00 |
+| Pata Amiga Brusque | Brusque | 143270 | 558 | 3.89 | 7.63 |
+| Pata Amiga Criciuma | Criciúma | 217392 | 822 | 3.78 | 8.07 |
+| Pata Amiga Lages | Lages | 158846 | 593 | 3.73 | 7.69 |
+| Pata Amiga Sao Jose Kobrasol | São José | 250181 | 929 | 3.71 | 8.01 |
+| Pata Amiga Chapeco | Chapecó | 254235 | 824 | 3.24 | 7.85 |
+| Pata Amiga Joinville Sul | Joinville | 597658 | 1888 | 3.16 | 7.83 |
+| Pata Amiga Itajai Praia | Itajaí | 264054 | 798 | 3.02 | 7.98 |
+| Pata Amiga Florianopolis Norte | Florianópolis | 537213 | 1426 | 2.65 | 8.02 |
 
 * **b) Faturamento por Faixa Atual & Limitação SCD Type 1:** Como o cadastro de franquias utiliza **SCD Type 1 (sobrescrita sem histórico)**, **os dados NÃO permitem responder quanto veio de lojas que JÁ ERAM Ouro na data do pedido**, pois a faixa atual sobrescreveu o status passado.
 
@@ -199,7 +230,6 @@ Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_p
 | Pedidos Sem Loja | Entregas Não Concluídas | Itens em Branco | Valores em Branco |
 | :---: | :---: | :---: | :---: |
 | **3** | **1953** | **257** | **121** |
-
 ---
 
 ## Estrutura dos Arquivos do Projeto no Git
@@ -208,7 +238,6 @@ Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_p
 * **.gitignore:** Arquivo para ignorar arquivos desnecessários no repositório.
 * **requirements.txt:** Resumo das bibliotecas e ferramentas necessárias para a execução do projeto.
 * **README.md:** Documentação principal do projeto.
-* **Diagrama miniprojeto.png:** Imagem do modelo estrela (Star Schema).
 
 **Pasta `sql/`:**
 * **00-conferencia.sql:** Arquivo já disponibilizado previamente para verificação de dados.
