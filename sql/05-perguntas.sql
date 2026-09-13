@@ -160,7 +160,8 @@ JOIN dim_loja dl ON f.sk_loja = dl.sk_loja
 WHERE dl.sk_loja <> -1
 GROUP BY dl.nome_loja, dl.cidade, dl.populacao_cidade
 ORDER BY itens_por_mil_habitantes DESC;
-
+-- ORDER BY tempo_medio_entrega_dias DESC;
+-- ORDER BY total_itens_vendidos DESC;
 
 --  (b) Mostre o faturamento por faixa de franquia e explique por que ele NAO
 --      responde "quanto veio de lojas que JA ERAM Ouro na data do pedido": o
