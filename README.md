@@ -10,8 +10,14 @@
   * [Tarefa 5: Responder e recomendar](#tarefa-5-responder-e-recomendar)
 * [Arquitetura de Dados & Modelo Dimensional](#arquitetura-de-dados--modelo-dimensional)
 * [Principais insights e conclusões](#principais-insights-e-conclusões)
+  * [P1: Onde está o gargalo da entrega?](#p1-onde-está-o-gargalo-da-entrega)
+  * [P2: Qual categoria concentra o faturamento?](#p2-qual-categoria-concentra-o-faturamento)
+  * [P3: O desconto funciona igual em todo canal?](#p3-o-desconto-funciona-igual-em-todo-canal)
+  * [P4: Qual praça de atendimento concentra o faturamento?](#p4-qual-praça-de-atendimento-concentra-o-faturamento)
+  * [P5: Onde abrir a próxima loja, e o que os dados NÃO permitem afirmar?](#p5-onde-abrir-a-próxima-loja-e-o-que-os-dados-não-permitem-afirmar)
 * [Estrutura dos Arquivos do Projeto no Git](#estrutura-dos-arquivos-do-projeto-no-git)
 * [Tecnologias e Ferramentas](#tecnologias-e-ferramentas)
+* [Melhorias a serem implementadas](#melhorias-a-serem-implementadas)
 * [Como Executar o Projeto](#como-executar-o-projeto)
 
 ---
