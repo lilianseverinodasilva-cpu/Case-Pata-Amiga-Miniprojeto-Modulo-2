@@ -271,6 +271,10 @@ Recomenda-se que a diretoria invista na criação de **Dark Stores ou Lojas de A
    git clone [https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git](https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git)
 2. Execute os scripts SQL da pasta sql/ respeitando a ordem numérica (do 01 ao 05).
 3. Para validar a integridade dos dados durante a execução, utilize os comandos do arquivo 00-conferencia.sql.
+
+No Sql, ao final do projeto, seguindo estritamente a sequência numérica dos arquivos, o Banco de Dados deve estar assim:
+<img width="252" height="178" alt="Captura de tela 2026-09-12 212045" src="https://github.com/user-attachments/assets/ccf862e4-cbf3-46f8-8f83-d5fe2d195009" />
+
 ---
 
 Desenvolvido por Lilian Severino da Silva
