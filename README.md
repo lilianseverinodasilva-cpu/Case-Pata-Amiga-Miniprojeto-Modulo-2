@@ -80,25 +80,46 @@ Das 3 tabelas de dados brutos disponibilizadas, podemos concluir que existem div
 
 ### Tarefa 2: Tratamento dos dados
 
-Com base nos erros encontrados na tarefa 1, faz-se as alterações necessárias aqui nesta etapa. Para isso, usa-se o arquivo `02-dimensoes-prontas`, já fornecido pelo projeto, para realizar todas as adequações. Aqui não foi necessário digitar ou codar nada. Ao final, todos os comandos de conferência estavam corretos, então a criação das tabelas raw/bronze e de dimensão, até o momento, deram certo.
+Com base nos erros estruturais e de qualidade identificados na tarefa 1, as adequações arquiteturais e de pré-processamento fundamentam as etapas seguintes:
+
+| Defeito | Onde | Conceito cobrado | Estratégia de Tratamento |
+| :--- | :--- | :--- | :--- |
+| Todas as colunas são texto | `todas as stg_` | staging × área de apresentação | Manter raw em texto e tipar na modelagem |
+| Nomes fora de `snake_case` | `Cod Loja, QTD.Itens` | identificador entre delimitador | Padronizar identificadores |
+| Dois formatos de data na MESMA tabela | `stg_pedido` | a máscara certa por coluna | Aplicar parser de data por formato |
+| 18 grafias para 7 categorias | `CategoriaProduto` | dimensão guarda a grafia crua | Agrupar em `nome_categoria` mantendo crua |
+| “Ração Medicamentosa” não é ração | `CategoriaProduto` | a ordem do CASE importa | Definir precedência rigorosa no CASE |
+| Dezenas de grafias de loja | `Loja-Nome` | padronizar antes do lookup | Normalizar string antes do cruzamento |
+| Cod Loja vazio em 39% das linhas | `stg_pedido` | resolver por nome | Realizar lookup via nome padronizado |
+| 3 pedidos sem loja identificada | `stg_pedido` | linha -1; nunca FK nula | Direcionar para `sk_loja = -1` |
+| Sim/não escrito de muitas maneiras | `HouveDesconto` | padronizar na carga da fato | Normalizar (S/SIM/1/X/V/TRUE $\rightarrow$ Sim) |
+| Canal escrito de muitas maneiras | `CanalPedido` | padronizar; WHATS antes de APP | Avaliar `WHATS` antes de `APP` no CASE |
+| Números em formatos misturados | `todas as numéricas` | a regra dos números | Converter separadores/tipos numéricos |
+| Loja em mais de uma praça | `stg_loja_praca` | bridge table com fator | Usar tabela ponte com `fator_publico` |
+| Cadastro só com a foto de hoje | `stg_loja` | o passado foi sobrescrito (limite da P5) | Assumir limitação de SCD Tipo 1 |
+| 2 datas por pedido na fato | `stg_pedido` | role-playing dimension | Reutilizar `dim_tempo` (pedido e entrega) |
+| Marco em branco = processo aberto | `stg_pedido` | FK → -1, e NULL nos dias | Atribuir `-1` na sk_entrega e `NULL` nos dias |
+| Número do pedido sem atributos | `NumeroPedido` | dimensão degenerada | Manter `numero_pedido` direto na fato |
 
 ---
 
 ### Tarefa 3: Construir as dimensões
 
-Aqui usa-se o arquivo `03-dimensoes`, disponibilizado previamente, e nele inseri os códigos para as devidas populações das tabelas dimensão pedidas. Depois, fiz a conferência com o arquivo 00, após a etapa 3, e todos os dados ficaram corretos.
+Aqui usa-se o arquivo `03-dimensoes`, disponibilizado previamente, e nele inseri os códigos para as devidas populações das tabelas dimensão pedidas. Depois, fiz a conferência com o arquivo 00, após a etapa 3, e todos os dados ficaram corretos. 
+* *Regras aplicadas:* `dim_categoria` dimensiona 19 linhas (18 grafias cruas + `-1`) e agrupa em 8 categorias padronizadas (`nome_categoria` + `-1`). `dim_praca` e `bridge_loja_praca` estruturam as 13 praças e 48 relacionamentos N:N, garantindo soma de `fator_publico = 1,00` por loja. Dimensões prontas (`dim_tempo` com 236 linhas baseada em inteiro `YYYYMMDD`, e `dim_loja` com 33 linhas) validam a integridade.
 
 ---
 
 ### Tarefa 4: Construir a fato
 
-Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado com o código necessário para a efetiva criação e população da tabela fato. Depois disso, executei os códigos de verificação no arquivo `00-conferencia`, e todos os resultados estavam dentro do esperado.
+Nesta etapa deve ser usado o arquivo `04-fato`, que foi devidamente completado com o código necessário para a efetiva criação e população da tabela `fato_pedido` (grão: 1 linha = 1 pedido; total de 4.044 linhas).
+* *Tratamentos embutidos no INSERT:* Padronização de `houve_desconto` (17 variações mapeadas para Sim/Nao/Nao Informado) e `canal_pedido` (com testes sequenciais avaliando `WHATS` antes de `APP`). Geração de `sk_tempo_entrega = -1` para os 1.953 pedidos abertos e `sk_loja = -1` para os 3 órfãos. Cálculo de delta de dias logísticos (`dias_integracao_separacao`, `dias_separacao_nota`, `dias_nota_despacho`, `dias_despacho_entrega`, `dias_total_ate_entrega`), gravando `NULL` onde há marcos em branco. Validação de zero FKs nulas ou órfãs.
 
 ---
 
 ### Tarefa 5: Responder e recomendar
 
-Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas. Os resultados estão na seção `Principais Insights e Conclusões` aqui do ReadMe, neste git.
+Nesta etapa foi necessário realizar consultas para responder às perguntas de negócio. Usou-se o arquivo `05-perguntas`, que precisava da criação dos códigos para as consultas (aplicando o rateio da praça na P4 via `fator_publico` para evitar estouro de faturamento da rede). Os resultados estão na seção `Principais Insights e Conclusões` aqui do ReadMe, neste git.
 
 ---
 
@@ -106,9 +127,7 @@ Nesta etapa foi necessário realizar consultas para responder às perguntas de n
 
 O modelo segue a modelagem dimensional em **Esquema Estrela (Star Schema)** com uma tabela fato centralizada e dimensões ao redor, além de uma tabela ponte para resolver o relacionamento N:N entre Lojas e Praças:
 
-<img width="1286" height="669" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/97dba933-7358-4178-85bd-31d534b012b1" />
-
-
+<img width="1438" height="678" alt="diagrama_case_pata_amiga" src="https://github.com/user-attachments/assets/7b7ba26e-4070-4526-95f9-a6053328100a" />
 Disponível também em: "https://dbdocs.io/lilianseverinodasilva/diagrama_case_pata_amiga?view=relationships"
 
 ---
@@ -275,10 +294,21 @@ Recomenda-se que a diretoria invista na criação de **Dark Stores ou Lojas de A
 1. Clone este repositório:
    ```bash
    git clone [https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git](https://github.com/lilianseverinodasilva-cpu/Case-Pata-Amiga-Miniprojeto-Modulo-2.git)
-2. Execute os scripts SQL da pasta sql/ respeitando a ordem numérica (do 01 ao 05).
-3. Para validar a integridade dos dados durante a execução, utilize os comandos do arquivo 00-conferencia.sql.
+Execução sequencial obrigatória: Execute os scripts SQL da pasta sql/ respeitando estritamente a ordem numérica de 01 a 05. Nota: Estes arquivos já contêm a implementação com os trechos desenvolvidos por você e os ganchos fornecidos pelo projeto.
 
-No Sql, ao final do projeto, seguindo estritamente a sequência numérica dos arquivos, o Banco de Dados deve estar assim:
+01-carga-staging.sql
+
+02-dimensoes-prontas.sql
+
+03-dimensoes.sql
+
+04-fato.sql
+
+05-perguntas.sql
+
+Validação e Conferência: Utilize o arquivo 00-conferencia.sql ao longo do processo para validar se os quantitativos intermediários e finais batem com o gabarito.
+
+No SQL, ao final do projeto, seguindo estritamente a sequência numérica dos arquivos, o Banco de Dados deve estar assim:
 <img width="252" height="178" alt="Captura de tela 2026-09-12 212045" src="https://github.com/user-attachments/assets/ccf862e4-cbf3-46f8-8f83-d5fe2d195009" />
 
 ---
