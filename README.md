@@ -1,5 +1,7 @@
 # Data Warehouse & Business Intelligence: Case Pata Amiga Petshops
 
+Vídeo sobre o projeto: https://drive.google.com/file/d/1eGRY22wx4Be5hTzcAC7Lmnf87RKVxAsT/view?usp=drive_link
+
 ## Índice
 * [Sobre o Projeto](#sobre-o-projeto)
 * [Etapas do Projeto](#etapas-do-projeto)
@@ -24,7 +26,7 @@
 
 ## Sobre o Projeto
 
-Este projeto foi desenvolvido como o **Projeto Avaliativo do Módulo 2** do curso de Análise de Dados com Python, oferecido pelo **SCTec** em parceria com a **SET** do Estado de Santa Catarina.
+Este projeto foi desenvolvido por Lilian Severino da Silva, como o **Projeto Avaliativo do Módulo 2** do curso de Análise de Dados com Python, oferecido pelo **SCTec** em parceria com a **SET** do Estado de Santa Catarina.
 
 O objetivo principal é construir um **Data Warehouse em MySQL** baseado em um **Star Schema (Modelo Estrela)** para a rede de petshops *Pata Amiga*, realizando o pipeline ETL (Extração, Transformação e Carga) da camada Staging para a camada Dimensional/Fato e extraindo *business insights* para responder a cinco perguntas estratégicas da diretoria:
 
